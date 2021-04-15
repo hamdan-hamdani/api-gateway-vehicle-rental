@@ -8,7 +8,7 @@ const orderRoutes = require("./order");
 router.get("/", (req, res) => {
   return res.json({
     success: true,
-    message: "This app is service user for vehicle rental apps",
+    message: "This app is api-gateway for service vehicle rental apps",
   });
 });
 
