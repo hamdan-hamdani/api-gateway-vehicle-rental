@@ -6,7 +6,7 @@ const api = apiAdapter(process.env.URL_SERVICE_USER);
 exports.createNewVehicle = async (req, res) => {
   try {
     console.log(process.env.URL_SERVICE_USER);
-    const user = await axios.post("http://localhost:5001/vehicle", req.body);
+    const user = await axios.post("https://service-vehicle-vehicle-rental.herokuapp.com/vehicle", req.body);
     return res.json(user.data);
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
@@ -47,7 +47,7 @@ exports.createNewVehicle = async (req, res) => {
 
 exports.getConditionVehicle = async (req, res) => {
   try {
-    const user = await axios.get(`http://localhost:5001/vehicle/`);
+    const user = await axios.get(`https://service-vehicle-vehicle-rental.herokuapp.com/vehicle/`);
     return res.json(user.data);
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
@@ -63,7 +63,7 @@ exports.getConditionVehicle = async (req, res) => {
 
 exports.updateVehicle = async (req, res) => {
   try {
-    const user = await axios.put(`http://localhost:5001/vehicle/${req.params.id}`, req.body);
+    const user = await axios.put(`https://service-vehicle-vehicle-rental.herokuapp.com/vehicle/${req.params.id}`, req.body);
     return res.json(user.data);
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
@@ -79,7 +79,7 @@ exports.updateVehicle = async (req, res) => {
 
 exports.deleteVehicle = async (req, res) => {
   try {
-    const user = await axios.delete(`http://localhost:5001/vehicle/${req.params.id}`);
+    const user = await axios.delete(`https://service-vehicle-vehicle-rental.herokuapp.com/vehicle/${req.params.id}`);
     return res.json(user.data);
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
