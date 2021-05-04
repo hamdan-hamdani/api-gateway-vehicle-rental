@@ -47,7 +47,14 @@ exports.createNewVehicle = async (req, res) => {
 
 exports.getConditionVehicle = async (req, res) => {
   try {
-    const user = await axios.get(`https://service-vehicle-vehicle-rental.herokuapp.com/vehicle/`);
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 5;
+    const offset = limit * (page - 1);
+    const search = req.query.search || "";
+    const sort = req.query.sort || "date";
+    const order = req.query.order || "ASC";
+    const filter = req.query.filter || "";
+    const user = await axios.get(`https://service-vehicle-vehicle-rental.herokuapp.com/vehicle/?sort=${sort}&order=${order}&search=${search}&page=${page}&limit=${limit}&filter=${filter}`);
     return res.json(user.data);
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
