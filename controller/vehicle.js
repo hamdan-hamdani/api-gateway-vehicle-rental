@@ -68,6 +68,22 @@ exports.getConditionVehicle = async (req, res) => {
   }
 };
 
+exports.getCategoryVehicle = async (req, res) => {
+  try {
+    const user = await axios.get(`https://service-vehicle-vehicle-rental.herokuapp.com/vehicle/category`);
+    return res.json(user.data);
+  } catch (error) {
+    if (error.code === "ECONNREFUSED") {
+      return res.status(500).json({
+        success: false,
+        message: "Service unavailable",
+      });
+    }
+    const { status, data } = error.response;
+    return res.status(status).json(data);
+  }
+};
+
 exports.updateVehicle = async (req, res) => {
   try {
     const user = await axios.put(`https://service-vehicle-vehicle-rental.herokuapp.com/vehicle/${req.params.id}`, req.body);

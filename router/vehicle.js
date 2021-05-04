@@ -6,6 +6,7 @@ const vehicleController = require("../controller/vehicle");
 
 router.post("/", vehicleController.createNewVehicle);
 router.get("/", vehicleController.getConditionVehicle);
+router.get("/category", vehicleController.getCategoryVehicle);
 router.put("/:id", vehicleController.updateVehicle);
 router.delete("/:id", vehicleController.deleteVehicle);
 
